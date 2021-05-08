@@ -4,6 +4,9 @@ bin/
 bin-int/
 
 # Files
+*.exe
+
+# Visual Studio
 *.sln
 *.user
 *.vcxproj
