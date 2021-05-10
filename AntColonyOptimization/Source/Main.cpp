@@ -28,7 +28,6 @@ int main(int arc, char* argv[])
 		}
 
 		Window.clear();
-		//Window.draw(Shape);
 		hexagonMap.Render(Window);
 
 		Window.display();

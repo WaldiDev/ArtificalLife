@@ -26,13 +26,13 @@ namespace
 	{
 		static const float pi = 3.14159265358979323846f;
 
-		float offset = (orientation == HexagonOrientation::PointyTopped) ? 30.0f : 0.0f;
+		const float offset = (orientation == HexagonOrientation::PointyTopped) ? 30.0f : 0.0f;
 
-		float degree = (60.0f * index) + offset;
-		float radians = pi / 180.0f * degree;
+		const float degree = (60.0f * index) + offset;
+		const float radians = pi / 180.0f * degree;
 
-		float x = size * cosf(radians);
-		float y = size * sinf(radians);
+		const float x = size * cosf(radians);
+		const float y = size * sinf(radians);
 
 		return sf::Vector2f(x, y);
 	}
@@ -41,14 +41,16 @@ namespace
 HexagonShape::HexagonShape(float size, HexagonOrientation orientation)
 	: mSize(size)
 	, mOrientation(orientation)
-	, mWidth(GetHexagonWith(size, orientation))
-	, mHeight(GetHexagonHeight(size, orientation))
+	, mWidth(GetHexagonWith(mSize, orientation))
+	, mHeight(GetHexagonHeight(mSize, orientation))
 	, mHorizontalDistance(GetHexagonHorizontalDistance(mWidth, orientation))
 	, mVerticalDistance(GetHexagonVerticalDistance(mHeight, orientation))
 {
+	const float outlineThickness = 1.0f;
+	sf::Vector2f points[6];
 	for (size_t index = 0u; index < HexagonPointCount; ++index)
 	{
-		mPoints[index] = CreatePoint(mSize, index, mOrientation);
+		mPoints[index] = CreatePoint(mSize - outlineThickness, index, mOrientation);
 	}
 
 	update();

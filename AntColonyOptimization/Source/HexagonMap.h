@@ -1,6 +1,8 @@
 #pragma once
 #include "SFML/System/Vector2.hpp"
 #include "HexagonShape.h"
+#include <vector>
+#include "SFML/Graphics/Vertex.hpp"
 
 namespace sf 
 { 
@@ -21,6 +23,8 @@ public:
 
 protected:
 	HexagonShape mHexagon;
+
+	std::vector<sf::Vertex> mGridVertexArray;
 
 	sf::Vector2u mMapSize;
 
